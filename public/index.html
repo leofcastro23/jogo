@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forca em Família</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>🎉 Forca em Família 🎉</h1>
+    <button id="btn-reiniciar-tudo" class="btn-icone" title="Recomeçar do zero">🔄</button>
+  </header>
+
+  <main class="tela-container">
+
+    <!-- TELA 1: Jogador 1 digita a palavra secreta -->
+    <section id="tela-config" class="tela ativa">
+      <h2>Jogador 1: escolha a palavra secreta</h2>
+      <p class="instrucao">Digite uma palavra (sem espaços) para o outro jogador adivinhar. Ela vai ficar escondida na tela.</p>
+
+      <form id="form-palavra">
+        <input
+          type="password"
+          id="input-palavra"
+          placeholder="Digite a palavra secreta"
+          autocomplete="off"
+          maxlength="20"
+          required
+        >
+        <p id="erro-palavra" class="mensagem-erro"></p>
+        <button type="submit" class="btn-principal">Confirmar palavra</button>
+      </form>
+    </section>
+
+    <!-- TELA 2: aviso para passar o dispositivo -->
+    <section id="tela-passar" class="tela">
+      <h2>Palavra definida! 🤫</h2>
+      <p class="instrucao">Agora passe o celular ou computador para quem vai tentar adivinhar.</p>
+      <button id="btn-pronto" class="btn-principal">Estou pronto! Vamos jogar 🎮</button>
+    </section>
+
+    <!-- TELA 3: o jogo em si -->
+    <section id="tela-jogo" class="tela">
+      <div class="area-jogo">
+        <svg id="desenho-forca" viewBox="0 0 200 250" aria-hidden="true">
+          <!-- forca (sempre visível) -->
+          <line x1="10" y1="230" x2="150" y2="230" class="forca-base"></line>
+          <line x1="40" y1="230" x2="40" y2="20" class="forca-base"></line>
+          <line x1="40" y1="20" x2="120" y2="20" class="forca-base"></line>
+          <line x1="120" y1="20" x2="120" y2="50" class="forca-base"></line>
+
+          <!-- partes do boneco (aparecem conforme os erros) -->
+          <circle id="parte-1" class="parte-boneco" cx="120" cy="70" r="20"></circle>
+          <line id="parte-2" class="parte-boneco" x1="120" y1="90" x2="120" y2="150"></line>
+          <line id="parte-3" class="parte-boneco" x1="120" y1="110" x2="95" y2="130"></line>
+          <line id="parte-4" class="parte-boneco" x1="120" y1="110" x2="145" y2="130"></line>
+          <line id="parte-5" class="parte-boneco" x1="120" y1="150" x2="100" y2="185"></line>
+          <line id="parte-6" class="parte-boneco" x1="120" y1="150" x2="140" y2="185"></line>
+        </svg>
+
+        <p id="contador-erros" class="contador-erros">Erros: 0 / 6</p>
+
+        <div id="palavra-escondida" class="palavra-escondida" aria-live="polite"></div>
+
+        <div id="teclado" class="teclado"></div>
+      </div>
+    </section>
+
+    <!-- TELA 4: resultado final -->
+    <section id="tela-fim" class="tela">
+      <h2 id="mensagem-fim"></h2>
+      <p id="palavra-revelada" class="palavra-revelada"></p>
+      <button id="btn-jogar-de-novo" class="btn-principal">Jogar novamente 🔁</button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Feito com carinho para brincar em família 💛</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

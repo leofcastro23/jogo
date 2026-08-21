@@ -1,0 +1,280 @@
+/* ===== Paleta de cores e variáveis ===== */
+:root {
+  --roxo: #6c4bff;
+  --rosa: #ff5c8a;
+  --amarelo: #ffc93c;
+  --verde: #2ecc71;
+  --vermelho: #ff5252;
+  --fundo: #fff6f0;
+  --texto: #2d2140;
+  --branco: #ffffff;
+  --sombra: 0 4px 14px rgba(45, 33, 64, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+  background: linear-gradient(160deg, #fff6f0 0%, #ffe9d6 100%);
+  color: var(--texto);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Cabeçalho ===== */
+.app-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 16px 8px;
+  position: relative;
+}
+
+.app-header h1 {
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  text-align: center;
+  color: var(--roxo);
+  margin: 0;
+}
+
+.btn-icone {
+  position: absolute;
+  right: 16px;
+  top: 24px;
+  background: var(--branco);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s;
+}
+
+.btn-icone:hover {
+  transform: rotate(90deg);
+}
+
+/* ===== Container principal e telas ===== */
+.tela-container {
+  width: 100%;
+  max-width: 600px;
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.tela {
+  display: none;
+  width: 100%;
+  background: var(--branco);
+  border-radius: 24px;
+  padding: 28px 20px;
+  box-shadow: var(--sombra);
+  text-align: center;
+  animation: aparecer 0.35s ease;
+}
+
+.tela.ativa {
+  display: block;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tela h2 {
+  color: var(--roxo);
+  margin-top: 0;
+}
+
+.instrucao {
+  color: #6b6178;
+  margin-bottom: 20px;
+}
+
+/* ===== Formulário da palavra secreta ===== */
+#input-palavra {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1.1rem;
+  border: 3px solid #e6ddf5;
+  border-radius: 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#input-palavra:focus {
+  border-color: var(--roxo);
+}
+
+.mensagem-erro {
+  color: var(--vermelho);
+  min-height: 20px;
+  font-size: 0.9rem;
+  margin: 8px 0 0;
+}
+
+/* ===== Botões ===== */
+.btn-principal {
+  margin-top: 20px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--branco);
+  background: linear-gradient(135deg, var(--roxo), var(--rosa));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: transform 0.15s;
+}
+
+.btn-principal:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-principal:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===== Área do jogo ===== */
+.area-jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+#desenho-forca {
+  width: 160px;
+  height: 200px;
+}
+
+.forca-base {
+  stroke: var(--roxo);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.parte-boneco {
+  stroke: var(--vermelho);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.parte-boneco.mostrar {
+  opacity: 1;
+}
+
+.contador-erros {
+  font-weight: bold;
+  color: var(--rosa);
+  margin: 0;
+}
+
+.palavra-escondida {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.letra-caixa {
+  width: 34px;
+  height: 42px;
+  border-bottom: 4px solid var(--roxo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.teclado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 480px;
+}
+
+.tecla {
+  width: 38px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: var(--amarelo);
+  color: var(--texto);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.tecla:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.tecla:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.tecla.acertou {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.tecla.errou {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+/* ===== Tela final ===== */
+.palavra-revelada {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--roxo);
+  text-transform: uppercase;
+}
+
+/* ===== Rodapé ===== */
+.app-footer {
+  padding: 16px;
+  color: #9a8fa8;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 420px) {
+  .letra-caixa {
+    width: 26px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .tecla {
+    width: 32px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "forca-em-familia",
+  "version": "1.0.0",
+  "description": "Jogo da forca colorido para jogar em família, passando o dispositivo entre os jogadores.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
